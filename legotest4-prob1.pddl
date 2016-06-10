@@ -5,5 +5,5 @@
 	(inbox white)
 	(inbox red))
   (:goal 
-	(and (touchSides white side1 red side2)(connected white) (connected red)))
+	(and (touchSides white side1 red side2) (attached white) (attached red)))
 )

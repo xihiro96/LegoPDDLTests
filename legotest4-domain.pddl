@@ -17,9 +17,9 @@
   (:action press
     :parameters (?ob)
     :precondition (and (onboard ?ob))
-    :effect (and (onboard ?ob) (connected ?ob)))
+    :effect (and (onboard ?ob) (attached ?ob)))
   (:action specificPlace
     :parameters (?ob ?ob2 ?side1 ?side2)
-    :precondition (and (inhand ?ob2) (connected ?ob))
+    :precondition (and (inhand ?ob2) (attached ?ob))
     :effect (and (onboard ?ob2) (not (inhand ?ob2)) (touchSides ?ob ?side1 ?ob2 ?side2)))
 )
