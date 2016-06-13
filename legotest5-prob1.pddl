@@ -1,0 +1,13 @@
+(define (problem lego5-prob)
+  (:domain lego5)
+  (:objects red2x4 black2x2 white2x2 - lego brd - board)
+  (:init (= (total-board-space brd) 16)
+	 (= (total-area red2x4) 8)
+	 (= (taken-space brd) 0)
+	 (= (exposed-space brd) 16)
+	 (= (total-area black2x2) 4)
+	 (= (total-area white2x2) 4))
+  (:goal (and
+		(= (exposed-space brd) 0)
+		(= (taken-space brd) 16)))
+)
