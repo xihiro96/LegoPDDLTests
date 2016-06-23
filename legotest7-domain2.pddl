@@ -25,13 +25,13 @@
    (:action checkHorz
         :parameters (?ob - lego ?sdl - lside ?sdb - bside)
         :precondition (and (inhand ?ob))
-        :effect (when (and (>= (e_w ?sdb) (l_w ?sdl)) (>= (e_h ?sdb) (l_h)))
+        :effect (when (>= (e_h ?sdb) (l_h))
                     (horz ?ob)))
  
   (:action checkVert 
 	:parameters (?ob - lego ?sdl - lside ?sdb - bside)                   
 	:precondition (and (inhand ?ob))
-	:effect (when (and (>= (e_h ?sdb) (l_w ?sdl)) (>= (e_w ?sdb) (l_h ?sdl)))
+	:effect (when (>= (e_w ?sdb) (l_h ?sdl))
 		    (vert ?ob)))                     
                      
                      
