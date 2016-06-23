@@ -22,13 +22,17 @@
         :effect (and (inhand ?ob)
                      (not (inbox ?ob))))
                      
-    (:action checkHorz
+   (:action checkHorz
         :parameters (?ob - lego ?sdl - lside ?sdb - bside)
-        :precondition (and (< (l_w ?sdl) (e_w ?sdb)) (> (l_h ?sdl) (e_h ?sdb)))
+        :precondition (and (> (e_w ?sdb) (l_w ?sdl)) (> (e_h ?sdb) (l_h ?sdl)))
         :effect (and
                     (horz ?ob)))
-                     
-                     
+ 
+  (:action checkVert 
+	:parameters (?ob - lego ?sdl - lside ?sdb - bside)                   
+	:precondition (and (>= (e_h ?sdb) (l_w ?sdl)) (>= (e_w ?Sdb) (l_h ?Sdl)))
+	:effect (and
+		    (vert ?ob)))                     
                      
                      
     
@@ -41,18 +45,15 @@
                      (decrease (exposed-space ?bd) (total-area ?ob))
                      (decrease (e_w ?sdb) (l_w ?sdl))
                      (decrease (e_h ?sdb) (l_h ?sdl))))                 
-  ;(:action vertPlace
-  ;      :parameters (?ob - lego ?sdl - lside ?sdb - bside ?bd - board)
-  ;      :precondition (and (inhand ?ob) (> (e_h ?sdb) (l_w ?sdl)) (> (e_w ?sdb) (l_h ?sdl)))
-  ;      :effect
-  ;              (and (onboard ?ob)
-  ;                   (not (inhand ?ob))
-  ;                   (decrease (exposed-space ?bd) (total-area ?ob))
-  ;                   (decrease (e_h ?sdb) (l_w ?sdl))
-  ;                   (decrease (e_w ?sdb) (l_h ?sdl))))
-
-  
-
+  (:action vertPlace
+       :parameters (?ob - lego ?sdl - lside ?sdb - bside ?bd - board)
+       :precondition (and (inhand ?ob) (vert ?ob))
+       :effect
+               (and (onboard ?ob)
+                    (not (inhand ?ob))
+                    (decrease (exposed-space ?bd) (total-area ?ob))
+                    (decrease (e_h ?sdb) (l_w ?sdl))
+                    (decrease (e_w ?sdb) (l_h ?sdl))))
 
   (:action press
         :parameters (?ob - lego)
