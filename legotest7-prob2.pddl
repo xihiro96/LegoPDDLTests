@@ -1,0 +1,18 @@
+(define (problem lego7-prob)
+  (:domain lego7)
+  (:objects red - lego brd - board ls - lside bs - bside)
+  (:init (= (total-board-space brd) 8)
+         (= (total-area red) 4)
+         (= (exposed-space brd) 8)
+         (= (e_w bs) 2)
+         (= (e_h bs) 4)
+         (= (l_w ls) 2)
+         (= (l_h ls) 2)
+         (inbox red))
+  (:goal (and
+                (attached red)
+                (= (exposed-space brd) 0)
+                (= (e_w bs) 0)
+                (= (e_h bs) 0)))
+)
+
