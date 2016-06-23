@@ -1,0 +1,17 @@
+(define (domain test-domain)
+  (:requirements :typing :equality :conditional-effects :fluents)
+  (:types car box)
+  (:constants goldie - car)
+  (:predicates (parked ?x - car) (holding ?x - box) (in ?x - box ?y - car))
+  (:functions (fuel-level ?x - car))
+  (:action load
+	:parameters (?x - box ?y - car)
+	:precondition (and (holding ?x) (parked ?y))
+	:effect (and (in ?x ?y)
+		(forall (?z - car)
+		(when (not (= ?z ?y))
+		(not (in ?x ?z))))))
+  (:action refuel
+	:parameters (?x - car)
+	:precondition (< (fuel-level ?x) 10)
+	:effect (increase (fuel-level ?x) 1)))
