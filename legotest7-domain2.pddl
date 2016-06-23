@@ -1,5 +1,5 @@
 (define (domain lego7)
-  (:requirements :strips :typing :fluents)
+  (:requirements :strips :typing :fluents :conditional-effects)
   (:types lego board lside bside)
   (:predicates
         (onboard ?x - lego)

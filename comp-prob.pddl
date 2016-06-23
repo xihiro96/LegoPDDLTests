@@ -4,4 +4,5 @@
   (:init
 	(= (size block) 5))
   (:goal (and
-	 (rightSide block))))
+	 (rightSide block)))
+  (:metric minimize (size)))
